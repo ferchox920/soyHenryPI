@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getAllCountries , getCountriesById } from "../controllers/controller.js";
 // import { getApi } from "../controllers/controller.js";
+import { getAllCountries , getCountriesById , getOneCountry} from "../controllers/controller.js";
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -8,14 +8,29 @@ import { getAllCountries , getCountriesById } from "../controllers/controller.js
 const countryRouter = Router();
 
 countryRouter.get("/", async (req, res) => {
-  const { name } = req.query;
+ 
   try {
-    const response = await getAllCountries(name);
+    const response = await getAllCountries();
     return res.status(200).json(response);
   } catch (error) {
     return res.status(400).json({ err: error.message });
   }
 });
+
+
+countryRouter.get("/name?", async (req, res) => {
+ 
+  try {
+    const {name}= req.query;
+    console.log(name);
+
+    const response = await getOneCountry(name);
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.status(400).json({ err: error.message });
+  }
+});
+
 
 countryRouter.get("/:id", async (req, res) => {
   const { id } = req.params;
