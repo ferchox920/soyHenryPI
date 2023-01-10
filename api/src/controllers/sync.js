@@ -19,6 +19,7 @@ const asyncApi = async () => {
       continents: c.continents,
       capital: c.capital||'Not have capital',
       subregion: c.subregion||'Not have subregion',
+      region: c.region||'Not have subregion',
       area: c.area,
       population: c.population,
     });

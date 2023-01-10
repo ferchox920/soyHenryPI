@@ -32,7 +32,7 @@ const AllCountries = () => {
 
   const getCountryByName = async (countryName) => {
     try {
-      const res = await fetch(`http://localhost:3001/country/${countryName}`);
+      const res = await fetch(`${apiURL}/name/${countryName}`);
 
       if (!res.ok) throw new Error("Not found any country!");
 
@@ -48,12 +48,11 @@ const AllCountries = () => {
 
   const getCountryByRegion = async (regionName) => {
     try {
-      const res = await fetch(`$http://localhost:3001/country`);
+      const res = await fetch(`${apiURL}/region/${regionName}`);
 
       if (!res.ok) throw new Error("Failed..........");
 
       const data = await res.json();
-      
       setCountries(data);
 
       setIsLoading(false);
@@ -84,7 +83,7 @@ const AllCountries = () => {
         {error && !isLoading && <h4>{error}</h4>}
 
         {countries?.map((country) => (
-          <Link to={`/country/${country.name}`}>
+          <Link to={`/country/${country.name.common}`}>
             <div className="country__card">
               <div className="country__img">
                 <img src={country.flags} alt="" />
