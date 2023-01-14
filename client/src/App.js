@@ -1,20 +1,24 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import AllCountries from "./components/AllCountries/AllCountries";
+
+import Home from "./components/Home/Home";
+import NavBar from "./components/NavBar/NavBar";
 import CountryInfo from "./components/CountryInfo/CountryInfo";
+import { useDispatch } from "react-redux";
+import { apiAllCountry } from "./Redux/apiPetitions";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => apiAllCountry(dispatch), [dispatch]);
+
   return (
     <>
-      <div className="header">
-        <div className="container">
-          <h5>Where in the world</h5>
-        </div>
-      </div>
+      <NavBar/>
       <div className="container">
         <Routes>
-          <Route path="/" element={<AllCountries />} />
-          <Route path="/country/:countryName" element={<CountryInfo />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/country/id/:countryId" element={<CountryInfo />} />
         </Routes>
       </div>
     </>

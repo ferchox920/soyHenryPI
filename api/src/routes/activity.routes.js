@@ -6,9 +6,9 @@ const activityRouter = Router();
 
 activityRouter.post("/", async (req, res)=>{
   
-    const {name,dificulty,season,countryId}= req.body;
+    const {name,duration,difficulty,season,countryId}= req.body;
     try {
-        const response = await createActivity(name,dificulty,season,countryId)
+        const response = await createActivity(name,duration,difficulty,season,countryId)
         return res.status(200).json(response)
         
     } catch (error) {
@@ -17,5 +17,7 @@ activityRouter.post("/", async (req, res)=>{
     }
 
 })
+
+
 
 export default activityRouter

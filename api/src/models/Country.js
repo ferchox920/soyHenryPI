@@ -27,6 +27,9 @@ const  COUNTRIES =DB.define('countries',{
     type:DataType.STRING,
     allowNull: false,
   },
+  region:{
+    type:DataType.STRING,
+  },
   subregion:{
     type:DataType.STRING,
   },
