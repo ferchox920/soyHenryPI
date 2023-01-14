@@ -1,12 +1,22 @@
-
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const AllCountries = () => {
+  const [count, setCount] = useState(0);
 
-  
-  const allCountries = useSelector((state) => state.country.countriesFilter);
+  if (count === 0) {
+    var a = 0;
+    var b = 9;
+  } else {
+    var a = count * 10;
+    var b = count * 10 + 10;
+  }
+  const pag=count+1
+
+  const allCountries = useSelector((state) =>
+    state.country.countriesFilter.slice(a, b)
+  );
 
   return (
     <div className="country__bottom">
@@ -29,6 +39,24 @@ const AllCountries = () => {
           </div>
         </Link>
       ))}
+      <button
+        onClick={() => {
+          if(count!==0){
+            setCount(count - 1);
+          }
+          
+        }}
+      >
+        -
+      </button>
+      <div>{pag}</div>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
     </div>
   );
 };
