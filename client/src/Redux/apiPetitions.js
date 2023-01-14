@@ -52,28 +52,34 @@ export async function apiCountryById(dispatch, id) {
 export async function apiCountryByActivity(dispatch,activity) {
   try {
     const peticion = await axios.get(`/country`);
-    const algo = peticion.data
-    console.log('aqui');
-    console.log(algo[0].activities.length);
+    const aux = peticion.data
+ 
+    const aux2=aux.filter(e=>e.activities.length!==0)
+    
+    
+    // console.log(aux2);
+    // console.log('----');
+    const aux3= aux2.map(e=>e.activities.filter(a=>a.season==='VERANO'))
+    // console.log(aux3);
     
     
   
 
     
-    dispatch(getAllCountries(peticion?.data));
+    dispatch(getAllCountries(aux2));
     return;
   } catch (error) {
     return error.response;
   }
 }
 
-export async function apiPostAction(action) {
+export async function apiPostAction(activities) {
   return await axios.post(`/activity/`, {
-    ...action,
-    name: action.name,
-    duration: action.duration,
-    difficulty: action.difficulty,
-    season: action.season,
-    countryId: action.countryId,
+    ...activities,
+    name: activities.name,
+    duration: activities.duration,
+    difficulty: Number(activities.difficulty),
+    season: activities.season,
+    countryId: activities.countryId,
   });
 }

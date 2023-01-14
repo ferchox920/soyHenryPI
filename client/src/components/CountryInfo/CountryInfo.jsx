@@ -62,7 +62,7 @@ const CountryInfo = () => {
                   </div>
                 ))}
 
-                <Form/>
+                <Form params={countryId}/>
               </h5>
             ) : undefined}
            
