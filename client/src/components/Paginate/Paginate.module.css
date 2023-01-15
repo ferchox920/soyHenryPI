@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+}
+.prevB{
+    background-color: #242424;
+    border: none;
+}
+.nextB{
+    background-color: #242424;
+    border: none;
+}

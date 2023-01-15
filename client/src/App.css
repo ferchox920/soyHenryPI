@@ -20,6 +20,13 @@
   width: 250px;
 }
 
+.container__paginate{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
 
 body {
   background: hsl(209, 76%, 49%);

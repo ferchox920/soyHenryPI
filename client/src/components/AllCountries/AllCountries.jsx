@@ -1,76 +1,51 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Paginate from "../Paginate/Paginate";
 
 const AllCountries = () => {
-  const [count, setCount] = useState(1);
+  const [pagina,setPagina ] = useState(1);
+  const [porPagina,setPorPagina ] = useState(10);
 
-  if (count === 0) {
-    var a = 0;
-    var b = 9;
-  } else {
-    var a = count * 10;
-    var b = count * 10 + 10;
-  }
-  const pag = count + 1;
-
+  
   const allCountries = useSelector((state) =>
-    state.country.countriesFilter.slice(a, b)
+  state.country.countriesFilter
   );
-
+  
+  
+  const max = allCountries.length/ porPagina;
+  console.log(max);
+ 
+  
   return (
     <>
-    <div className="country__container">
-      {allCountries?.map((country) => (
-        <Link to={`/country/id/${country.id}`} key={country.id}>
-          <div className="country__card">
-            <div className="country__img">
-              <img src={country.flags} alt="" />
+      <div className="country__container">
+        {allCountries?.slice((pagina-1)*porPagina,(pagina-1)*porPagina+porPagina).map((country) => (
+          <Link to={`/country/id/${country.id}`} key={country.id}>
+            <div className="country__card">
+              <div className="country__img">
+                <img src={country.flags} alt="" />
+              </div>
+
+              <div className="country__data">
+                <h3>{country.name}</h3>
+                <h6>
+                  {" "}
+                  Population:{" "}
+                  {new Intl.NumberFormat().format(country.population)}
+                </h6>
+                <h6> Sub-Region: {country.subregion}</h6>
+                <h6>Capital: {country.capital}</h6>
+              </div>
             </div>
-
-            <div className="country__data">
-              <h3>{country.name}</h3>
-              <h6>
-                {" "}
-                Population: {new Intl.NumberFormat().format(country.population)}
-              </h6>
-              <h6> Sub-Region: {country.subregion}</h6>
-              <h6>Capital: {country.capital}</h6>
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
-      <div className="container_button_p">
-
-      <button
-      className="page__button"
-        onClick={() => {
-          if (count !== 0) {
-            setCount(count - 1);
-          }
-        }}
-        >
-        -
-      </button>
-      
-      
-
-      <div>{pag}</div>
-     
-
-      <button
-      className="page__button"
-        onClick={() => {
-          if (count < 24) {
-            setCount(count + 1);
-          }
-        }}
-        >
-        +
-      </button>
-        </div>
-          </>
+          </Link>
+        ))}
+      </div>
+      <br />
+      <div className="container__paginate">
+      <Paginate pagina={pagina} setPagina={setPagina} max={max}/>
+      </div>
+    </>
   );
 };
 
