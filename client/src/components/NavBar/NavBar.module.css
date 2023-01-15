@@ -1,0 +1,24 @@
+.header {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: hsl(209, 23%, 22%);
+    z-index: 11;
+    display: flex;
+  }
+.image{
+    margin-top: 10px;
+    width: 50px;
+}
+  .container {
+    width: 300px;
+    padding: 0px 15px;
+    margin: auto !important;
+  }
+  .container:hover {
+    cursor: pointer;
+    transform: scale(1.02)
+  }

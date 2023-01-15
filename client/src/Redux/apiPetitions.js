@@ -3,7 +3,7 @@ import {
   getAllCountries,
   getCountryById,
   getCountryByName,
-  getCountryByRegion
+  getCountryByRegion,
 } from "./countrySlice.js";
 
 export async function apiAllCountry(dispatch) {
@@ -30,13 +30,12 @@ export async function apiCountryByName(dispatch, name) {
 export async function apiCountryByRegion(dispatch, region) {
   try {
     const peticion = await axios.get(`/country/region?region=${region}`);
-    dispatch(getCountryByRegion(peticion?.data,));
+    dispatch(getCountryByRegion(peticion?.data));
     return;
   } catch (error) {
     return error.response;
   }
 }
-
 
 export async function apiCountryById(dispatch, id) {
   try {
@@ -49,24 +48,21 @@ export async function apiCountryById(dispatch, id) {
   }
 }
 
-export async function apiCountryByActivity(dispatch,activity) {
+export async function apiCountryByActivity(dispatch) {
   try {
     const peticion = await axios.get(`/country`);
-    const aux = peticion.data
- 
-    const aux2=aux.filter(e=>e.activities.length!==0)
+    const aux = peticion.data;
     
-    
-    // console.log(aux2);
-    // console.log('----');
-    const aux3= aux2.map(e=>e.activities.filter(a=>a.season==='VERANO'))
-    // console.log(aux3);
-    
-    
-  
+      const aux2 = aux.filter((e) => e.activities.length !== 0);
+      dispatch(getAllCountries(aux2));
+     
 
-    
-    dispatch(getAllCountries(aux2));
+    // // console.log(aux2);
+    // // console.log('----');
+    // const aux3= aux2.map(e=>e.activities.filter(a=>a.season==='VERANO'))
+    // // console.log(aux3);
+
+
     return;
   } catch (error) {
     return error.response;

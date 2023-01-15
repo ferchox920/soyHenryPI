@@ -1,0 +1,8 @@
+.container{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top:50px  ;
+    margin-left:50px  ;
+    text-align: center;
+    color: #fff;
+}
