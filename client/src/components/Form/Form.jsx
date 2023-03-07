@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from './Form.module.css';
+import styles from "./Form.module.css";
 
 import { apiPostAction } from "../../Redux/apiPetitions";
 
@@ -36,10 +36,11 @@ const Form = ({ params }) => {
   return (
     <div className={styles.container}>
       <form onSubmit={submitHandler}>
-        <label htmlFor="name">Nombre de Actividad: </label>
+        <label className={styles.label} htmlFor="name">Nombre de Actividad: </label>
         <br />
         <br />
         <input
+          className={styles.input}
           type="text"
           id="name"
           name="name"
@@ -47,9 +48,10 @@ const Form = ({ params }) => {
           onChange={handleChangeInput}
         />
         <br />
-        <p>Duracion</p>
+        <p className={styles.text}>Duracion</p>
 
         <select
+          className={styles.select}
           name="duration"
           value={action.duration}
           onChange={handleChangeInput}
@@ -61,8 +63,9 @@ const Form = ({ params }) => {
           <option>More to one Day</option>
         </select>
         <br />
-        <p>Difficult</p>
+        <p className={styles.text}>Difficult</p>
         <select
+          className={styles.select}
           name="difficulty"
           value={action.difficulty}
           onChange={handleChangeInput}
@@ -75,8 +78,9 @@ const Form = ({ params }) => {
           <option>5</option>
         </select>
         <br />
-        <p>SEASON</p>
+        <p className={styles.text}>SEASON</p>
         <select
+          className={styles.select}
           name="season"
           onChange={handleChangeInput}
           value={action.season}
@@ -88,7 +92,7 @@ const Form = ({ params }) => {
           <option>PRIMAVERA</option>
         </select>
         <br />
-        <button type="submit">Submit</button>
+        <button className={styles.button} type="submit">Submit</button>
       </form>
     </div>
   );

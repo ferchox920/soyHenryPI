@@ -2,36 +2,43 @@ import React, { useState } from "react";
 import styles from "./Paginate.module.css";
 
 const Paginate = ({ pagina, setPagina, max }) => {
-  const [input, setInput] = useState(1);
-  const nextPage = ()=>{
-    setInput(input+1)
-    setPagina(pagina+1)}
+  const [input, setInput] = useState(pagina);
 
-  const backPage = ()=>{
-   
-        setInput(input-1)
-        setPagina(pagina-1)
-
-    
-  }
-  const onKeyDown=(e)=>{
-    if(e.keyCode==13){
-        setPagina(parseInt(e.target.value))
-        if(parseInt(e.target.value)<1||parseInt(e.target.value)>Math.ceil(max)|| isNaN(parseInt(e.target.value))){
-            setPagina(1)
-            setInput(1)
-        }else{
-            setPagina(parseInt(e.target.value))
-        }
+  const handlePageChange = (newPage) => {
+    if (newPage < 1 || newPage > Math.ceil(max) || isNaN(newPage)) {
+      newPage = 1;
     }
-  }
-  const onChange=(e)=>{
-    setInput(e.target.value)
-  }
+    setInput(newPage);
+    setPagina(newPage);
+  };
+
+  const handleInputKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handlePageChange(parseInt(e.target.value));
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleNextPage = () => {
+    const newPage = pagina + 1;
+    handlePageChange(newPage);
+  };
+
+  const handleBackPage = () => {
+    const newPage = pagina - 1;
+    handlePageChange(newPage);
+  };
+
   return (
     <div className={styles.container}>
-      <button disabled={pagina===1||pagina<1} className={styles.prevB}
-      onClick={backPage}>
+      <button
+        disabled={pagina <= 1}
+        className={styles.prevB}
+        onClick={handleBackPage}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -47,11 +54,20 @@ const Paginate = ({ pagina, setPagina, max }) => {
           />
         </svg>
       </button>
-      <input onChange={onChange} onKeyDown={e=>onKeyDown(e)} name="page" value={input} autoComplete="off" />
-      <p>de {Math.round(max)}</p>
-      <button className={styles.nextB}
-      disabled={pagina===max||pagina>max}
-      onClick={nextPage}>
+      <input
+        type="number"
+        name="page"
+        value={input}
+        onChange={handleInputChange}
+        onKeyDown={handleInputKeyDown}
+        autoComplete="off"
+      />
+      <p>de {Math.ceil(max)}</p>
+      <button
+        disabled={pagina >= max}
+        className={styles.nextB}
+        onClick={handleNextPage}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

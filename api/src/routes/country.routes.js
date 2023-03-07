@@ -1,79 +1,81 @@
 import { Router } from "express";
-// import { getApi } from "../controllers/controller.js";
-import { getAllCountries , getCountriesById , getOneCountry, getCountriesByRegion, getCountriesByActivity} from "../controllers/controller.js";
-
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+import { getAllCountries, getCountriesById, getOneCountry, getCountriesByRegion, getCountriesByActivity } from "../controllers/controller.js";
 
 const countryRouter = Router();
 
-countryRouter.get("/", async (req, res) => {
- 
+// Middleware para manejar errores
+const errorHandler = (error, req, res, next) => {
+  console.error(error.stack);
+  res.status(500).json({ error: "Internal Server Error" });
+};
+
+// Endpoint para obtener todos los países
+countryRouter.get("/", async (req, res, next) => {
   try {
     const response = await getAllCountries();
-    return res.status(200).json(response);
+    res.status(200).json(response);
   } catch (error) {
-    return res.status(400).json({ err: error.message });
+    next(error);
   }
 });
 
-
-countryRouter.get("/name?", async (req, res) => {
- 
+// Endpoint para buscar países por nombre
+countryRouter.get("/name", async (req, res, next) => {
   try {
-    const {name}= req.query;
-  
-
+    const { name } = req.query;
+    if (!name) {
+      return res.status(400).json({ error: "Name parameter is required" });
+    }
     const response = await getOneCountry(name);
-    return res.status(200).json(response);
+    res.status(200).json(response);
   } catch (error) {
-    return res.status(400).json({ err: error.message });
+    next(error);
   }
 });
 
-countryRouter.get("/region?", async (req, res) => {
- 
+// Endpoint para buscar países por región
+countryRouter.get("/region", async (req, res, next) => {
   try {
-    const {region}= req.query;
-    
-
+    const { region } = req.query;
+    if (!region) {
+      return res.status(400).json({ error: "Region parameter is required" });
+    }
     const response = await getCountriesByRegion(region);
-    return res.status(200).json(response);
+    res.status(200).json(response);
   } catch (error) {
-    return res.status(400).json({ err: error.message });
+    next(error);
   }
 });
 
-
-countryRouter.get("/id/:id", async (req, res) => {
-  const { id } = req.params;
+// Endpoint para buscar países por ID
+countryRouter.get("/id/:id", async (req, res, next) => {
   try {
+    const { id } = req.params;
     const response = await getCountriesById(id.toUpperCase());
-    if (!response) return res.status(404).send("NOT FOUND 404");
-
-    return res.status(200).json(response);
+    if (!response) {
+      return res.status(404).json({ error: "Country not found" });
+    }
+    res.status(200).json(response);
   } catch (error) {
-    return res.status(500).json({ err: error.message });
+    next(error);
   }
 });
 
-
-countryRouter.get("/actName/:name", async (req, res) => {
-  const { name } = req.params;
+// Endpoint para buscar países por actividad
+countryRouter.get("/actName/:name", async (req, res, next) => {
   try {
-    console.log('aqui');
-      const response = await getCountriesByActivity(name);
-      if (!response) return res.status(404).send("NOT FOUND 404");
-      
-      return res.status(200).json(response);
+    const { name } = req.params;
+    const response = await getCountriesByActivity(name);
+    if (!response) {
+      return res.status(404).json({ error: "Activity not found" });
+    }
+    res.status(200).json(response);
   } catch (error) {
-      console.log('aqui');
-    return res.status(500).json({ err: error.message });
+    next(error);
   }
 });
 
-
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+// Configurar middleware de manejo de errores
+countryRouter.use(errorHandler);
 
 export default countryRouter;

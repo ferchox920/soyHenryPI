@@ -53,6 +53,12 @@ export async function getCountriesById(id) {
   });
   return getCountryById;
 }
+export async function getActivities() {
+  const activities= await ACTIVITY.findAll({
+    include: [COUNTRIES]
+  });
+  return activities;
+}
 
 export async function createActivity(
   name,

@@ -1,0 +1,29 @@
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .activityCard {
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .activityTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .activityDetails {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .noActivities {
+    font-style: italic;
+    color: #888;
+  }
+  

@@ -1,31 +1,41 @@
-import "./App.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import CountryInfo from "./components/CountryInfo/CountryInfo";
 import About from "./components/About/About";
-import { useDispatch } from "react-redux";
 import { apiAllCountry } from "./Redux/apiPetitions";
-import { useEffect } from "react";
 
-const AllRoutes =   ()=> {
+const AppRoutes = () => {
   const dispatch = useDispatch();
-  useEffect(async() =>await apiAllCountry(dispatch), [dispatch]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await apiAllCountry(dispatch);
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  const routes = {
+    "/home": <Home />,
+    "/country/id/:countryId": <CountryInfo />,
+    "/about": <About />,
+  };
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <div className="container">
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/country/id/:countryId" element={<CountryInfo />} />
-          <Route path="/About" element={<About />} />
-
+          {Object.entries(routes).map(([routePath, routeElement]) => (
+            <Route key={routePath} path={routePath} element={routeElement} />
+          ))}
         </Routes>
       </div>
     </>
   );
-}
+};
 
-export default AllRoutes;
+export default AppRoutes;
