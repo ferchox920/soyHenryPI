@@ -3,7 +3,7 @@ import styles from "./Form.module.css";
 
 import { apiPostAction } from "../../Redux/apiPetitions";
 
-const Form = ({ params }) => {
+const FormActivity = ({ params }) => {
 
 
   const [action, setNewActivity] = useState({
@@ -98,4 +98,4 @@ const Form = ({ params }) => {
   );
 };
 
-export default Form;
+export default FormActivity;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Modal = ({ show, onClose, children }) => {
+const ModalForm = ({ show, onClose, children }) => {
   return (
     <>
       {show && (
@@ -17,4 +17,4 @@ const Modal = ({ show, onClose, children }) => {
   );
 };
 
-export default Modal;
+export default ModalForm;

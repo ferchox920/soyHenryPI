@@ -1,0 +1,68 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.backButton {
+  margin-bottom: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.countryFlagImg {
+  max-height: 200px;
+}
+
+.countryDetails {
+  flex: 1;
+  margin-left: 1.5rem;
+}
+
+.countryName {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+
+.countryInfoRow {
+  margin: 0;
+}
+
+.countryInfoData {
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+.showFormButton {
+  margin-top: 1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+}
