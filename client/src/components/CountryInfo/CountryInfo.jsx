@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { apiCountryById } from "../../Redux/apiPetitions";
 import FormActivity from "../Form/FormActiviy";
+import Activity from "../Activity/Activity";
 import ModalForm from "../Modal/ModalForm";
 import styles from "./CountryInfo.module.css";
 
@@ -97,11 +98,14 @@ const CountryInfo = () => {
             )}
           </div>
         </div>
+
+        {country.activities && <Activity country={country} />}
+
         <button className={styles.showFormBtn} onClick={handleShowForm}>
           Show Form
         </button>
         <ModalForm show={showForm} onClose={handleCloseForm}>
-          <FormActivity />
+          <FormActivity params={countryId} />
         </ModalForm>
       </div>
     </>

@@ -14,11 +14,11 @@ const Activity = ({ country }) => {
   };
 
   return (
-    <div className={styles.activity}>
+    <div className={styles.activityContainer}>
       {country.activities && country.activities.length > 0 ? (
-        <div>
+        <div className={styles.activityContent}>
           <h3>Actividades</h3>
-          <Slider {...settings}>
+          <Slider {...settings} className={styles.slider}>
             {country.activities.map((activity, index) => (
               <div key={index}>
                 <h4>Actividad {index + 1}</h4>

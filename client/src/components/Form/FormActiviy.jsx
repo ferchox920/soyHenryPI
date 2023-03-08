@@ -4,8 +4,6 @@ import styles from "./Form.module.css";
 import { apiPostAction } from "../../Redux/apiPetitions";
 
 const FormActivity = ({ params }) => {
-
-
   const [action, setNewActivity] = useState({
     name: "",
     duration: "",
@@ -19,24 +17,23 @@ const FormActivity = ({ params }) => {
     setNewActivity({
       ...action,
       [name]: value,
-      
     });
-    
   };
 
   const submitHandler = async function submitHandler(e) {
     e.preventDefault();
     console.log(action);
-    
-    alert('The activity has been created successfully')
-    
-    apiPostAction(action);
+    await apiPostAction(action);
+    alert('The activity has been created successfully');
+    window.location.reload();
   };
 
   return (
     <div className={styles.container}>
       <form onSubmit={submitHandler}>
-        <label className={styles.label} htmlFor="name">Nombre de Actividad: </label>
+        <label className={styles.label} htmlFor="name">
+          Nombre de Actividad:{" "}
+        </label>
         <br />
         <br />
         <input
@@ -92,7 +89,9 @@ const FormActivity = ({ params }) => {
           <option>PRIMAVERA</option>
         </select>
         <br />
-        <button className={styles.button} type="submit">Submit</button>
+        <button className={styles.button} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

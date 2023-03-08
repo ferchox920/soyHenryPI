@@ -1,29 +1,91 @@
-.title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.activityContainer {
+  margin: 30px 0;
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  touch-action: pan-y;
+  padding: 20px;
+}
+
+.slick-slider .slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-slider .slick-list:focus {
+  outline: none;
+}
+
+.slick-slider .slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-slider .slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+
+.slick-slider .slick-slide > div {
+  margin: 0 15px;
+  padding: 15px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.slick-slider .slick-slide.slick-active {
+  display: block;
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.slick-dots li button:before {
+  color: #999;
+  font-size: 16px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #333;
+}
+
+@media (min-width: 768px) {
+  .slick-slider {
+    padding: 40px;
   }
-  
-  .activityCard {
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
+
+  h3 {
+    font-size: 36px;
+    margin-bottom: 40px;
   }
-  
-  .activityTitle {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+
+  .slick-slider .slick-slide > div {
+    max-width: 600px;
+    margin: 0 auto;
   }
-  
-  .activityDetails {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .noActivities {
-    font-style: italic;
-    color: #888;
-  }
-  
+}
