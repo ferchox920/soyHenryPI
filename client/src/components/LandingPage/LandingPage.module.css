@@ -1,0 +1,65 @@
+/* LandingPage.module.css */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: hsl(209, 76%, 49%);
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  main {
+    max-width: 800px;
+    padding: 3rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+  }
+  
+  .description {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+    color: #444444;
+  }
+  
+  .ctaButton {
+    display: inline-block;
+    padding: 1.2rem 4rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #445cfe;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .ctaButton:hover {
+    background-color: #4f4f4f;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .footer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .footerText {
+    font-size: 1.4rem;
+    color: #444444;
+  }
+  
