@@ -1,6 +1,4 @@
-
 import {
-  
   apiCountryByName,
   apiCountryByRegion,
   apiCountryByActivity,
@@ -11,10 +9,10 @@ import FilterContinents from "../FilterContinents/FilterContinents";
 import AllCountries from "../AllCountries/AllCountries";
 import FilterActivity from "../FilterActivity/FilterActivity";
 import { useDispatch } from "react-redux";
+import styles from "./Home.module.css";
 
 const Home = () => {
-
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
 
   const getCountryByName = async (countryName) => {
     apiCountryByName(dispatch, countryName);
@@ -28,21 +26,15 @@ const Home = () => {
   };
 
   return (
-    <div className="all__country__wrapper">
-      <div className="country__top">
-        <div className="search">
-          <SearchInput onSearch={getCountryByName} />
-        </div>
+    <>
+   <div className={styles.filters}>
+  <SearchInput onSearch={getCountryByName} className={styles["search-input"]} />
+  <FilterContinents onSelect={getCountryByRegion} className={styles["filter-continent"]} />
+  <FilterActivity onSelect={getCountryByActivity} className={styles["filter-activity"]} />
+</div>
 
-        <div className="filter">
-          <FilterContinents onSelect={getCountryByRegion} />
-        </div>
-        <div className="filter">
-          <FilterActivity onSelect={getCountryByActivity} />
-        </div>
-      </div>
       <AllCountries />
-    </div>
+    </>
   );
 };
 

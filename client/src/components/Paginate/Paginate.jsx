@@ -36,7 +36,7 @@ const Paginate = ({ pagina, setPagina, max }) => {
     <div className={styles.container}>
       <button
         disabled={pagina <= 1}
-        className={styles.prevB}
+        className={styles.button}
         onClick={handleBackPage}
       >
         <svg
@@ -61,11 +61,12 @@ const Paginate = ({ pagina, setPagina, max }) => {
         onChange={handleInputChange}
         onKeyDown={handleInputKeyDown}
         autoComplete="off"
+        className={styles.input}
       />
-      <p>de {Math.ceil(max)}</p>
+      <p className={styles.pages}>de {Math.ceil(max)}</p>
       <button
         disabled={pagina >= max}
-        className={styles.nextB}
+        className={styles.button}
         onClick={handleNextPage}
       >
         <svg

@@ -27,13 +27,13 @@ const AppRoutes = () => {
   return (
     <>
       <NavBar />
-      <div className="container">
+    
         <Routes>
           {Object.entries(routes).map(([routePath, routeElement]) => (
             <Route key={routePath} path={routePath} element={routeElement} />
           ))}
         </Routes>
-      </div>
+    
     </>
   );
 };

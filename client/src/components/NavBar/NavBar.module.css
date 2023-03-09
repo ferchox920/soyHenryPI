@@ -1,24 +1,45 @@
 .header {
-    width: 100%;
-    height: 70px;
-    line-height: 70px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: hsl(209, 23%, 22%);
-    z-index: 11;
-    display: flex;
-  }
-.image{
-    margin-top: 10px;
-    width: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 5em; /* ajustamos la altura del NavBar */
+  align-items: center;
+  padding: 0 3rem;
+  background: hsl(209, 23%, 22%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-  .container {
-    width: 300px;
-    padding: 0px 15px;
-    margin: auto !important;
-  }
-  .container:hover {
-    cursor: pointer;
-    transform: scale(1.02)
-  }
+
+.logoLink {
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 2em; /* ajustamos el tamaño de la fuente */
+  font-weight: 800;
+  color: #e4d8d8;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container:nth-child(2) {
+  justify-content: center;
+}
+
+.container:nth-child(3) {
+  justify-content: flex-end;
+}
+
+.container span {
+  margin-left: 0.8em; /* ajustamos el margen izquierdo */
+  font-size: 1.2em; /* ajustamos el tamaño de la fuente */
+  font-weight: 600;
+  color: #e4d8d8;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.image {
+  height: 2em; /* ajustamos el tamaño de la imagen */
+}

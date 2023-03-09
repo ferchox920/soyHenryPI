@@ -1,0 +1,25 @@
+.filters {
+    padding: 0 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .search-input {
+    flex: 1;
+    max-width: 150px;
+    margin-right: 10px;
+  }
+  
+  .filter-continent {
+    flex: 1;
+    max-width: 100px;
+    margin-right: 10px;
+  }
+  
+  .filter-activity {
+    flex: 1;
+    max-width: 120px;
+  }
+  

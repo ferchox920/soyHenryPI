@@ -1,0 +1,49 @@
+.country__container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    height: calc(2 * (400px + 20px));
+   
+    justify-items: center;
+    align-items: center;
+  }
+  
+  
+  .country__card {
+    width: 300px;
+    height: 400px; /* altura deseada */
+
+    background: hsl(209, 23%, 22%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .country__img img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    max-height: 250px;
+    object-fit: cover;
+  }
+  
+  .country__data {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .country__data h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #eee2e2;
+  }
+  
+  .country__data h6 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    color: #ffffff;
+  }
+  

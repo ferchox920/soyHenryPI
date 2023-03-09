@@ -6,8 +6,35 @@
 
 .backButton {
   margin-bottom: 1rem;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
+.backButton:hover {
+  background-color: #999;
+  color: #fff;
+}
+
+.showFormBtn{
+  margin-bottom: 1rem;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.showFormBtn:hover {
+  background-color: #999;
+  color: #fff;
+}
 .card {
   display: flex;
   flex-direction: row;
